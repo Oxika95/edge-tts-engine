@@ -2,28 +2,20 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- TTS Engine permissions -->
-    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
-    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    
-    <!-- Voice cloning permissions -->
-    <uses-permission android:name="android.permission.RECORD_AUDIO" />
-    
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.NekoSpeak"
-        android:largeHeap="true"
+        android:theme="@style/Theme.EdgeTtsEngine"
         tools:targetApi="34">
-        
-        <!-- TTS Service -->
+
         <service
-            android:name=".NekoTtsService"
+            android:name=".EdgeTtsService"
             android:exported="true"
             android:label="@string/app_name">
             <intent-filter>
@@ -34,8 +26,7 @@
                 android:name="android.speech.tts"
                 android:resource="@xml/tts_engine" />
         </service>
-        
-        <!-- Check Voice Data Activity -->
+
         <activity
             android:name=".CheckVoiceData"
             android:exported="true"
@@ -45,8 +36,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        
-        <!-- Get Sample Text Activity -->
+
         <activity
             android:name=".GetSampleText"
             android:exported="true"
@@ -56,8 +46,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        
-        <!-- Install Voice Data Activity -->
+
         <activity
             android:name=".InstallVoiceData"
             android:exported="true"
@@ -67,13 +56,12 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        
-        <!-- Main Settings Activity -->
+
         <activity
             android:name=".ui.MainActivity"
             android:exported="true"
             android:label="@string/app_name"
-            android:theme="@style/Theme.NekoSpeak">
+            android:theme="@style/Theme.EdgeTtsEngine">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -83,17 +71,5 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
-        <provider
-            android:name="androidx.core.content.FileProvider"
-            android:authorities="${applicationId}.fileprovider"
-            android:exported="false"
-            android:grantUriPermissions="true">
-            <meta-data
-                android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/file_paths" />
-        </provider>
-        
     </application>
-
 </manifest>

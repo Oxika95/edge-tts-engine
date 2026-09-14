@@ -13,5 +13,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "NekoSpeak"
+rootProject.name = "EdgeTtsEngine"
 include(":app")
